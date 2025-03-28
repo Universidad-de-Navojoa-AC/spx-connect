@@ -1,0 +1,29 @@
+# Composer dependencies
+/vendor
+
+# Laravel config cache
+.phpunit.result.cache
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# IDEs
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Composer artifacts
+composer.lock
+
+# PHPStorm metadata
+/.phpstorm.meta.php/
