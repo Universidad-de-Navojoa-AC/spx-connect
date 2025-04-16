@@ -27,8 +27,8 @@ class SpxClient implements SpxClientInterface
         return $this->getService($name);
     }
 
-    public function authenticate(string $username, string $password, string $email): bool
+    public function auth(): AuthService
     {
-        return $this->auth->login($username, $password, $email);
+        return $this->auth;
     }
 }

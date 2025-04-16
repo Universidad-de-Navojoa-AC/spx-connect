@@ -11,7 +11,7 @@ use Unav\SpxConnect\Services\AuthService;
  */
 interface SpxClientInterface
 {
-    public function authenticate(string $username, string $password, string $email): bool;
-
     public function getService(string $key): mixed;
+
+    public function auth(): AuthService;
 }
