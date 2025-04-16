@@ -1,6 +1,6 @@
 <?php
 
-namespace Unav\SpxConnect;
+namespace Unav\SpxConnect\Services;
 
 class TokenManager
 {

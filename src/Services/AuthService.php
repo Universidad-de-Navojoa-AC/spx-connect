@@ -1,12 +1,12 @@
 <?php
 
-namespace Unav\SpxConnect;
+namespace Unav\SpxConnect\Services;
 
 use Illuminate\Support\Facades\Http;
 
 class AuthService
 {
-    protected string $baseUrl;
+    protected string $baseUrl ;
 
     public function __construct()
     {
