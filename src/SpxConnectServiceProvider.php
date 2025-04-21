@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Unav\SpxConnect\Contracts\SpxClientInterface;
 use Unav\SpxConnect\Services\AuthService;
 use Unav\SpxConnect\Services\SunPlusAccountService;
+use Unav\SpxConnect\Services\SunPlusDimensionService;
 
 class SpxConnectServiceProvider extends ServiceProvider
 {
@@ -15,6 +16,7 @@ class SpxConnectServiceProvider extends ServiceProvider
             return new SpxClient([
                 'auth' => $app->make(AuthService::class),
                 'sunplusAccounts' => $app->make(SunPlusAccountService::class),
+                'sunplusDimensions' => $app->make(SunPlusDimensionService::class),
             ]);
         });
 
