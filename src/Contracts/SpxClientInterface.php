@@ -4,6 +4,7 @@ namespace Unav\SpxConnect\Contracts;
 
 use Unav\SpxConnect\Services\AuthService;
 use Unav\SpxConnect\Services\SunPlusAccountService;
+use Unav\SpxConnect\Services\SunPlusDimensionService;
 
 /**
  * Interface SpxClientInterface
@@ -17,4 +18,6 @@ interface SpxClientInterface
     public function auth(): AuthService;
 
     public function sunplusAccounts(): SunPlusAccountService;
+
+    public function sunplusDimension(): SunPlusDimensionService;
 }
