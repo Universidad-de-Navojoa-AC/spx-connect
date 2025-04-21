@@ -11,12 +11,14 @@ class SpxConnectServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(SpxClientInterface::class, function ($app) {
+        $this->app->singleton(SpxClientInterface::class, function ($app) {
             return new SpxClient([
                 'auth' => $app->make(AuthService::class),
                 'sunplusAccounts' => $app->make(SunPlusAccountService::class),
             ]);
         });
+
+        $this->app->alias(SpxClientInterface::class, 'spxconnect');
     }
 
     public function boot(): void
