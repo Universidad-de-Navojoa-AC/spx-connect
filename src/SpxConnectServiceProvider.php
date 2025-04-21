@@ -16,7 +16,7 @@ class SpxConnectServiceProvider extends ServiceProvider
             return new SpxClient([
                 'auth' => $app->make(AuthService::class),
                 'sunplusAccounts' => $app->make(SunPlusAccountService::class),
-                'sunplusDimensions' => $app->make(SunPlusDimensionService::class),
+                'sunplusDimension' => $app->make(SunPlusDimensionService::class),
             ]);
         });
 
