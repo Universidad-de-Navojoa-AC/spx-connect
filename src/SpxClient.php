@@ -5,10 +5,12 @@ namespace Unav\SpxConnect;
 use Unav\SpxConnect\Contracts\SpxClientInterface;
 use Unav\SpxConnect\Services\AuthService;
 use Unav\SpxConnect\Services\SunPlusAccountService;
+use Unav\SpxConnect\Services\SunPlusDimensionService;
 
 /**
  * @property AuthService $auth
  * @property SunPlusAccountService $sunplusAccounts
+ * @property SunPlusDimensionService $sunplusDimension
  */
 class SpxClient implements SpxClientInterface
 {
@@ -37,5 +39,10 @@ class SpxClient implements SpxClientInterface
     public function sunplusAccounts(): SunPlusAccountService
     {
         return $this->sunplusAccounts;
+    }
+
+    public function sunplusDimension(): SunPlusDimensionService
+    {
+        return $this->sunplusDimension;
     }
 }
