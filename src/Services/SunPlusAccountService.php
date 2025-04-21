@@ -3,6 +3,7 @@
 namespace Unav\SpxConnect\Services;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class SunPlusAccountService
 {
@@ -15,10 +16,14 @@ class SunPlusAccountService
 
     public function getAll(): array
     {
-        $response = Http::withToken(TokenManager::getToken())
-            ->get("$this->baseUrl/account-list");
+//        $response = Http::withToken(TokenManager::getToken())
+//            ->get("$this->baseUrl/account-list");
+//
+//        return $response->successful() ? $response->json()['response'] : [];
 
-        return $response->successful() ? $response->json() : [];
+        return Http::withToken(TokenManager::getToken())
+                ->get("$this->baseUrl/account-list")
+                ->json('response', []);
     }
 
     public function findByCode(string $accountCode): array
