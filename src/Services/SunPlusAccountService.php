@@ -16,13 +16,9 @@ class SunPlusAccountService
 
     public function getAll(): array
     {
-//        $response = Http::withToken(TokenManager::getToken())
-//            ->get("$this->baseUrl/account-list");
-//
-//        return $response->successful() ? $response->json()['response'] : [];
-
         return Http::withToken(TokenManager::getToken())
                 ->get("$this->baseUrl/account-list")
+                ->trow()
                 ->json('response', []);
     }
 
