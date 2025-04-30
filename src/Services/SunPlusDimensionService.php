@@ -17,7 +17,7 @@ class SunPlusDimensionService
         $this->baseUrl = 'https://api.sunplusxtra.mx/api/spxtra';
     }
 
-    public function getAll(DimensionType $dimension): array
+    public function find(DimensionType $dimension): array
     {
         try {
             return Http::withToken(TokenManager::getToken())
