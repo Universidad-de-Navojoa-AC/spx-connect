@@ -2,11 +2,14 @@
 
 namespace Unav\SpxConnect\Services;
 
+use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class AuthService
 {
-    protected string $baseUrl ;
+    protected string $baseUrl;
 
     public function __construct()
     {
@@ -29,6 +32,47 @@ class AuthService
                 TokenManager::setCredentials($username, $password, $email);
                 return true;
             }
+        }
+
+        return false;
+    }
+
+    public function hasValidToken(): bool
+    {
+        $token = TokenManager::getToken();
+
+        try {
+            $response = Http::withToken($token)
+                ->get("$this->baseUrl/company")
+                ->throw();
+
+            switch ($response->status()) {
+                case 200:
+                    return true;
+                case 220:
+                    Log::error('Token inválido', [
+                        'status' => $response->status(),
+                        'body' => $response->body(),
+                    ]);
+                    break;
+                default:
+                    Log::error('Error al validar el token', [
+                        'status' => $response->status(),
+                        'body' => $response->body(),
+                    ]);
+                    break;
+            }
+        } catch (RequestException $e) {
+            $status = $e->response->status();
+            $body = $e->response->body();
+
+            Log::error('Error al validar el token', [
+                'status' => $status,
+                'body' => $body,
+                'ex' => $e,
+            ]);
+        } catch (ConnectionException $e) {
+            Log::error('Conexión fallida a SunPlusXtra', ['ex' => $e]);
         }
 
         return false;
