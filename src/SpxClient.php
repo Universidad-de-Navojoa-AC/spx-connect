@@ -57,6 +57,6 @@ class SpxClient implements SpxClientInterface
 
     public function educationLevels(): EducationLevelService
     {
-        return $this->educationLevels();
+        return $this->educationLevels;
     }
 }
