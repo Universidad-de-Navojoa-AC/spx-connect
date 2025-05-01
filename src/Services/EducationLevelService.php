@@ -20,7 +20,7 @@ class EducationLevelService
     {
         try {
             return Http::withToken(TokenManager::getToken())
-                ->get("$this->baseUrl//education-levels/all")
+                ->get("$this->baseUrl/education-levels/all")
                 ->throw()
                 ->json('response', []);
         } catch (RequestException $e) {
