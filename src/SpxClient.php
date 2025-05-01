@@ -14,6 +14,7 @@ use Unav\SpxConnect\Services\SunPlusDimensionService;
  * @property SunPlusAccountService $sunplusAccounts
  * @property SunPlusDimensionService $sunplusDimension
  * @property ProductService $products
+ * @property EducationLevelService $educationLevels
  */
 class SpxClient implements SpxClientInterface
 {
