@@ -5,6 +5,7 @@ namespace Unav\SpxConnect;
 use Illuminate\Support\ServiceProvider;
 use Unav\SpxConnect\Contracts\SpxClientInterface;
 use Unav\SpxConnect\Services\AuthService;
+use Unav\SpxConnect\Services\EducationLevelService;
 use Unav\SpxConnect\Services\ProductService;
 use Unav\SpxConnect\Services\SunPlusAccountService;
 use Unav\SpxConnect\Services\SunPlusDimensionService;
@@ -19,6 +20,7 @@ class SpxConnectServiceProvider extends ServiceProvider
                 'sunplusAccounts' => $app->make(SunPlusAccountService::class),
                 'sunplusDimension' => $app->make(SunPlusDimensionService::class),
                 'products' => $app->make(ProductService::class),
+                'educationLevels' => $app->make(EducationLevelService::class),
             ]);
         });
 
