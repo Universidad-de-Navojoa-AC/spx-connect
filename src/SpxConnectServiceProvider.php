@@ -16,17 +16,7 @@ class SpxConnectServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(SpxClientInterface::class, function ($app) {
-            return new SpxClient([
-                'auth' => $app->make(AuthService::class),
-                'cache' => $app->make(CacheManagerInterface::class),
-                'sunplusAccounts' => $app->make(SunPlusAccountService::class),
-                'sunplusDimension' => $app->make(SunPlusDimensionService::class),
-                'products' => $app->make(ProductService::class),
-                'educationLevels' => $app->make(EducationLevelService::class),
-            ]);
-        });
-
+        $this->app->singleton(SpxClientInterface::class, SpxClient::class);
         $this->app->alias(SpxClientInterface::class, 'spxconnect');
     }
 
