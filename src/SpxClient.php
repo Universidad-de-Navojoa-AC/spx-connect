@@ -11,31 +11,25 @@ use Unav\SpxConnect\Services\SunPlusAccountService;
 use Unav\SpxConnect\Services\SunPlusDimensionService;
 
 /**
- * @property AuthService $auth
- * @property CacheManagerInterface $cacheManager
- * @property SunPlusAccountService $sunplusAccounts
- * @property SunPlusDimensionService $sunplusDimension
- * @property ProductService $products
- * @property EducationLevelService $educationLevels
+ * Facade para acceder a SpxClient
+ *
+ * @method static AuthService auth()
+ * @method static CacheManagerInterface cache()
+ * @method static SunPlusAccountService sunplusAccounts()
+ * @method static SunPlusDimensionService sunplusDimension()
+ * @method static ProductService products()
+ * @method static EducationLevelService educationLevels()
  */
 class SpxClient implements SpxClientInterface
 {
-    protected array $services = [];
-
-    public function __construct(array $services)
-    {
-        $this->services = $services;
-    }
-
-    public function getService(string $key): mixed
-    {
-        return $this->services[$key] ?? null;
-    }
-
-    public function __get(string $name): mixed
-    {
-        return $this->getService($name);
-    }
+    public function __construct(
+        protected AuthService $auth,
+        protected CacheManagerInterface $cacheManager,
+        protected SunPlusAccountService $sunplusAccounts,
+        protected SunPlusDimensionService $sunplusDimension,
+        protected ProductService $products,
+        protected EducationLevelService $educationLevels,
+    ) {}
 
     public function auth(): AuthService
     {
