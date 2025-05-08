@@ -2,6 +2,7 @@
 
 namespace Unav\SpxConnect;
 
+use Unav\SpxConnect\Contracts\CacheManagerInterface;
 use Unav\SpxConnect\Contracts\SpxClientInterface;
 use Unav\SpxConnect\Services\AuthService;
 use Unav\SpxConnect\Services\EducationLevelService;
@@ -11,6 +12,7 @@ use Unav\SpxConnect\Services\SunPlusDimensionService;
 
 /**
  * @property AuthService $auth
+ * @property CacheManagerInterface $cacheManager
  * @property SunPlusAccountService $sunplusAccounts
  * @property SunPlusDimensionService $sunplusDimension
  * @property ProductService $products
@@ -38,6 +40,11 @@ class SpxClient implements SpxClientInterface
     public function auth(): AuthService
     {
         return $this->auth;
+    }
+
+    public function cache(): CacheManagerInterface
+    {
+        return $this->cacheManager;
     }
 
     public function sunplusAccounts(): SunPlusAccountService

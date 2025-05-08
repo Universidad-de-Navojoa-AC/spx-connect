@@ -19,6 +19,8 @@ interface SpxClientInterface
 
     public function auth(): AuthService;
 
+    public function cache(): CacheManagerInterface;
+
     public function sunplusAccounts(): SunPlusAccountService;
 
     public function sunplusDimension(): SunPlusDimensionService;
