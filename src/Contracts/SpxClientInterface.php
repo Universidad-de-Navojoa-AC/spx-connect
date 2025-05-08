@@ -15,8 +15,6 @@ use Unav\SpxConnect\Services\SunPlusDimensionService;
  */
 interface SpxClientInterface
 {
-    public function getService(string $key): mixed;
-
     public function auth(): AuthService;
 
     public function cache(): CacheManagerInterface;
