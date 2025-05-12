@@ -2,9 +2,9 @@
 
 namespace Unav\SpxConnect;
 
-use Unav\SpxConnect\Contracts\CacheManagerInterface;
 use Unav\SpxConnect\Contracts\SpxClientInterface;
 use Unav\SpxConnect\Services\AuthService;
+use Unav\SpxConnect\Services\CacheManager;
 use Unav\SpxConnect\Services\EducationLevelService;
 use Unav\SpxConnect\Services\ProductService;
 use Unav\SpxConnect\Services\SunPlusAccountService;
@@ -14,7 +14,7 @@ use Unav\SpxConnect\Services\SunPlusDimensionService;
  * Facade para acceder a SpxClient
  *
  * @method static AuthService auth()
- * @method static CacheManagerInterface cache()
+ * @method static CacheManager cache()
  * @method static SunPlusAccountService sunplusAccounts()
  * @method static SunPlusDimensionService sunplusDimension()
  * @method static ProductService products()
@@ -24,7 +24,7 @@ class SpxClient implements SpxClientInterface
 {
     public function __construct(
         protected AuthService $auth,
-        protected CacheManagerInterface $cacheManager,
+        protected CacheManager $cache,
         protected SunPlusAccountService $sunplusAccounts,
         protected SunPlusDimensionService $sunplusDimension,
         protected ProductService $products,
@@ -36,9 +36,9 @@ class SpxClient implements SpxClientInterface
         return $this->auth;
     }
 
-    public function cache(): CacheManagerInterface
+    public function cache(): CacheManager
     {
-        return $this->cacheManager;
+        return $this->cache;
     }
 
     public function sunplusAccounts(): SunPlusAccountService
