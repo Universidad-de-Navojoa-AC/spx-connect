@@ -2,38 +2,83 @@
 
 namespace Unav\SpxConnect\Services;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Crypt;
+
 class TokenManager
 {
-    protected static ?string $accessToken = null;
-    protected static ?array $credentials = null;
+    protected static string $tokenKeyPrefix = 'spx_access_token_';
+    protected static string $credentialPrefix = 'spx_credentials_';
 
-    public static function setToken(string $token): void
+    public static function setToken(string $token, int $ttl = 3600): void
     {
-        self::$accessToken = $token;
+        $encrypted = Crypt::encryptString($token);
+        $userId = Auth::id();
+
+        Cache::put(self::$tokenKeyPrefix . $userId, $encrypted, $ttl);
     }
 
     public static function getToken(): ?string
     {
-        return self::$accessToken;
+        $userId = Auth::id();
+        $encrypted = Cache::get(self::$tokenKeyPrefix . $userId);
+
+        if (!$encrypted) {
+            return null;
+        }
+
+        try {
+            return Crypt::decryptString($encrypted);
+        } catch (\Exception $e) {
+            return null;
+        }
     }
 
     public static function hasToken(): bool
     {
-        return self::$accessToken !== null;
+        $userId = Auth::id();
+
+        return Cache::has(self::$tokenKeyPrefix . $userId);
     }
 
     public static function clearToken(): void
     {
-        self::$accessToken = null;
+        $userId = Auth::id();
+
+        Cache::forget(self::$tokenKeyPrefix . $userId);
     }
 
-    public static function setCredentials(string $username, string $password, string $email): void
+    public static function setCredentials(string $username, string $password, string $email, int $ttl = 3600): void
     {
-        self::$credentials = compact('username', 'password', 'email');
+        $data = compact('username', 'password', 'email');
+        $encrypted = Crypt::encryptString(json_encode($data));
+        $userId = Auth::id();
+
+        Cache::put(self::$credentialPrefix . $userId, $encrypted, $ttl);
     }
 
     public static function getCredentials(): ?array
     {
-        return self::$credentials;
+        $userId = Auth::id();
+        $encrypted = Cache::get(self::$credentialPrefix . $userId);
+
+        if (!$encrypted) {
+            return null;
+        }
+
+        try {
+            $json = Crypt::decryptString($encrypted);
+            return json_decode($json, true);
+        } catch (\Exception $e) {
+            return null;
+        }
+    }
+
+    public static function clearCredentials(): void
+    {
+        $userId = Auth::id();
+
+        Cache::forget(self::$credentialPrefix . $userId);
     }
 }
