@@ -3,6 +3,8 @@
 namespace Unav\SpxConnect;
 
 use Illuminate\Support\Facades\Http;
+use Unav\SpxConnect\Services\AuthService;
+use Unav\SpxConnect\Services\TokenManager;
 
 class BaseApiService
 {
