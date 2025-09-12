@@ -20,7 +20,7 @@ class ClientService
     {
         try {
             return Http::withToken(TokenManager::getToken())
-                ->get("$this->baseUrl/clientes", [
+                ->get("$this->baseUrl/clients", [
                     'search' => $query
                 ])
                 ->throw()
