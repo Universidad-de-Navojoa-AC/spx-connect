@@ -5,6 +5,7 @@ namespace Unav\SpxConnect;
 use Unav\SpxConnect\Contracts\SpxClientInterface;
 use Unav\SpxConnect\Services\AuthService;
 use Unav\SpxConnect\Services\CacheManager;
+use Unav\SpxConnect\Services\ClientService;
 use Unav\SpxConnect\Services\EducationLevelService;
 use Unav\SpxConnect\Services\ProductService;
 use Unav\SpxConnect\Services\SunPlusAccountService;
@@ -18,6 +19,7 @@ use Unav\SpxConnect\Services\SunPlusDimensionService;
  * @method static SunPlusAccountService sunplusAccounts()
  * @method static SunPlusDimensionService sunplusDimension()
  * @method static ProductService products()
+ * @method static ClientService clients()
  * @method static EducationLevelService educationLevels()
  */
 class SpxClient implements SpxClientInterface
@@ -28,6 +30,7 @@ class SpxClient implements SpxClientInterface
         protected SunPlusAccountService $sunplusAccounts,
         protected SunPlusDimensionService $sunplusDimension,
         protected ProductService $products,
+        protected ClientService $clients,
         protected EducationLevelService $educationLevels,
     ) {}
 
@@ -54,6 +57,11 @@ class SpxClient implements SpxClientInterface
     public function products(): ProductService
     {
         return $this->products;
+    }
+
+    public function clients(): ClientService
+    {
+        return $this->clients;
     }
 
     public function educationLevels(): EducationLevelService
