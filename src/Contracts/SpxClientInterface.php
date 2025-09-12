@@ -4,6 +4,7 @@ namespace Unav\SpxConnect\Contracts;
 
 use Unav\SpxConnect\Services\AuthService;
 use Unav\SpxConnect\Services\CacheManager;
+use Unav\SpxConnect\Services\ClientService;
 use Unav\SpxConnect\Services\EducationLevelService;
 use Unav\SpxConnect\Services\ProductService;
 use Unav\SpxConnect\Services\SunPlusAccountService;
@@ -25,6 +26,8 @@ interface SpxClientInterface
     public function sunplusDimension(): SunPlusDimensionService;
 
     public function products(): ProductService;
+
+    public function clients(): ClientService;
 
     public function educationLevels(): EducationLevelService;
 }
