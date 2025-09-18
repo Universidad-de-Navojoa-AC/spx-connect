@@ -28,7 +28,7 @@ class BaseApiService
                 ->$method("$this->baseUrl/$endpoint", $data);
         }
 
-        return $response->json();
+        return $response;
     }
 
     public function get(string $endpoint, array $data = [], array $headers = [])
