@@ -37,7 +37,7 @@ class JournalService extends BaseApiService
         return [];
     }
 
-    public function downloadJournalFile(int $journalNumber, string $book, JournalFileType $journalFileType, ?string $logo): ?string
+    public function downloadJournalFile(int $journalNumber, string $book, JournalFileType $journalFileType, string $logo = null): ?string
     {
         try {
             $payload = empty($logo) ? [
@@ -55,7 +55,7 @@ class JournalService extends BaseApiService
 
             return $this->request('post', 'journal/print', $payload)
                 ->throw()
-                ->json('response.response', null);
+                ->json('response', null);
         } catch (RequestException $e) {
             $status = $e->response->status();
             $body = $e->response->body();
