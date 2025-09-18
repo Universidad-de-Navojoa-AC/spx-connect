@@ -53,7 +53,7 @@ class JournalService extends BaseApiService
                 ],
             ];
 
-            return $this->request('post', 'journal/file', $payload)
+            return $this->request('post', 'journal/print', $payload)
                 ->throw()
                 ->json('response.response', null);
         } catch (RequestException $e) {
