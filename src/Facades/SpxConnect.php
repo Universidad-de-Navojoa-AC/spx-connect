@@ -7,6 +7,7 @@ use Unav\SpxConnect\Contracts\CacheManagerInterface;
 use Unav\SpxConnect\Services\AuthService;
 use Unav\SpxConnect\Services\ClientService;
 use Unav\SpxConnect\Services\EducationLevelService;
+use Unav\SpxConnect\Services\JournalService;
 use Unav\SpxConnect\Services\ProductService;
 use Unav\SpxConnect\Services\SunPlusAccountService;
 use Unav\SpxConnect\Services\SunPlusDimensionService;
@@ -21,6 +22,7 @@ use Unav\SpxConnect\Services\SunPlusDimensionService;
  * @method static ProductService products()
  * @method static ClientService clients()
  * @method static EducationLevelService educationLevels()
+ * @method static JournalService journal()
  */
 class SpxConnect extends Facade
 {

@@ -6,6 +6,7 @@ use Unav\SpxConnect\Services\AuthService;
 use Unav\SpxConnect\Services\CacheManager;
 use Unav\SpxConnect\Services\ClientService;
 use Unav\SpxConnect\Services\EducationLevelService;
+use Unav\SpxConnect\Services\JournalService;
 use Unav\SpxConnect\Services\ProductService;
 use Unav\SpxConnect\Services\SunPlusAccountService;
 use Unav\SpxConnect\Services\SunPlusDimensionService;
@@ -30,4 +31,6 @@ interface SpxClientInterface
     public function clients(): ClientService;
 
     public function educationLevels(): EducationLevelService;
+
+    public function journal(): JournalService;
 }

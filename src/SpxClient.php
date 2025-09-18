@@ -7,6 +7,7 @@ use Unav\SpxConnect\Services\AuthService;
 use Unav\SpxConnect\Services\CacheManager;
 use Unav\SpxConnect\Services\ClientService;
 use Unav\SpxConnect\Services\EducationLevelService;
+use Unav\SpxConnect\Services\JournalService;
 use Unav\SpxConnect\Services\ProductService;
 use Unav\SpxConnect\Services\SunPlusAccountService;
 use Unav\SpxConnect\Services\SunPlusDimensionService;
@@ -25,14 +26,17 @@ use Unav\SpxConnect\Services\SunPlusDimensionService;
 class SpxClient implements SpxClientInterface
 {
     public function __construct(
-        protected AuthService $auth,
-        protected CacheManager $cache,
-        protected SunPlusAccountService $sunplusAccounts,
+        protected AuthService             $auth,
+        protected CacheManager            $cache,
+        protected SunPlusAccountService   $sunplusAccounts,
         protected SunPlusDimensionService $sunplusDimension,
-        protected ProductService $products,
-        protected ClientService $clients,
-        protected EducationLevelService $educationLevels,
-    ) {}
+        protected ProductService          $products,
+        protected ClientService           $clients,
+        protected EducationLevelService   $educationLevels,
+        protected JournalService          $journal,
+    )
+    {
+    }
 
     public function auth(): AuthService
     {
@@ -67,5 +71,10 @@ class SpxClient implements SpxClientInterface
     public function educationLevels(): EducationLevelService
     {
         return $this->educationLevels;
+    }
+
+    public function journal(): JournalService
+    {
+        return $this->journal;
     }
 }
