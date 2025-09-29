@@ -5,6 +5,7 @@ namespace Unav\SpxConnect;
 use Unav\SpxConnect\Contracts\SpxClientInterface;
 use Unav\SpxConnect\Services\AuthService;
 use Unav\SpxConnect\Services\CacheManager;
+use Unav\SpxConnect\Services\CfdiService;
 use Unav\SpxConnect\Services\ClientService;
 use Unav\SpxConnect\Services\EducationLevelService;
 use Unav\SpxConnect\Services\JournalService;
@@ -34,6 +35,7 @@ class SpxClient implements SpxClientInterface
         protected ClientService           $clients,
         protected EducationLevelService   $educationLevels,
         protected JournalService          $journal,
+        protected CfdiService             $cfdi,
     )
     {
     }
@@ -76,5 +78,10 @@ class SpxClient implements SpxClientInterface
     public function journal(): JournalService
     {
         return $this->journal;
+    }
+
+    public function cfdi(): CfdiService
+    {
+        return $this->cfdi;
     }
 }

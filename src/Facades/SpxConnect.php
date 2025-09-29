@@ -5,6 +5,7 @@ namespace Unav\SpxConnect\Facades;
 use Illuminate\Support\Facades\Facade;
 use Unav\SpxConnect\Contracts\CacheManagerInterface;
 use Unav\SpxConnect\Services\AuthService;
+use Unav\SpxConnect\Services\CfdiService;
 use Unav\SpxConnect\Services\ClientService;
 use Unav\SpxConnect\Services\EducationLevelService;
 use Unav\SpxConnect\Services\JournalService;
@@ -23,6 +24,7 @@ use Unav\SpxConnect\Services\SunPlusDimensionService;
  * @method static ClientService clients()
  * @method static EducationLevelService educationLevels()
  * @method static JournalService journal()
+ * @method static CfdiService cfdi()
  */
 class SpxConnect extends Facade
 {
