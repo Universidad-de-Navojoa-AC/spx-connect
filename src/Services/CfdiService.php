@@ -63,4 +63,40 @@ class CfdiService extends BaseApiService
 
         return null;
     }
+
+    /**
+     * Verify if one or more CFDI exist in the Database of SunPlusXtra, returns a map for each UUID indicating if it exists or not
+     *
+     * @param string $rfc
+     * @param array $uuidList
+     * @return array
+     */
+    public function verify(string $rfc, array $uuidList): array
+    {
+        if (empty($rfc) || empty($uuidList)) {
+            return [];
+        }
+
+        try {
+            return $this->request('post', 'verifica-UUID', [
+                'rfc' => $rfc,
+                'uuidList' => $uuidList,
+            ])
+                ->throw()
+                ->json('response', []);
+        } catch (RequestException $e) {
+            $status = $e->response->status();
+            $body = $e->response->body();
+
+            Log::error('Error al verificar el comprobante', [
+                'status' => $status,
+                'body' => $body,
+                'ex' => $e,
+            ]);
+        } catch (ConnectionException $e) {
+            Log::error('Conexión fallida a SunPlusXtra', ['ex' => $e]);
+        }
+
+        return [];
+    }
 }
