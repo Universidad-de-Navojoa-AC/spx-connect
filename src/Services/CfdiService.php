@@ -88,7 +88,7 @@ class CfdiService extends BaseApiService
             $status = $e->response->status();
             $body = $e->response->body();
 
-            Log::error('Error al verificar el comprobante', [
+            Log::error('Error al verificar los comprobantes', [
                 'status' => $status,
                 'body' => $body,
                 'ex' => $e,
@@ -99,4 +99,6 @@ class CfdiService extends BaseApiService
 
         return [];
     }
+
+
 }
