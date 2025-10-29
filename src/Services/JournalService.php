@@ -15,6 +15,33 @@ class JournalService extends BaseApiService
         parent::__construct();
     }
 
+    /**
+     * Get the list of journal types
+     *
+     * @return array
+     */
+    public function getJournalTypes(): array
+    {
+        try {
+            return $this->request('get', 'journal/type-list')
+                ->throw()
+                ->json('response', []);
+        } catch (RequestException $e) {
+            $status = $e->response->status();
+            $body = $e->response->body();
+
+            Log::error('Error al obtener los tipos de diario', [
+                'status' => $status,
+                'body' => $body,
+                'ex' => $e,
+            ]);
+        } catch (ConnectionException $e) {
+            Log::error('Conexión fallida a SunPlusXtra', ['ex' => $e]);
+        }
+
+        return [];
+    }
+
     public function postJournalEntry(array $payload): array
     {
         try {
