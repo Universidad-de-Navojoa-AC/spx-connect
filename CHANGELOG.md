@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.0.0...v1.1.0) (2025-10-29)
+
+
+### Features
+
+* **api:** Agregar método para obtener los tipos de diarios ([d5e0965](https://github.com/Universidad-de-Navojoa-AC/spx-connect/commit/d5e096553c2a41c1b243a4eb3283355ac8cbf99d))
+
 # 1.0.0 (2025-10-29)
 
 
