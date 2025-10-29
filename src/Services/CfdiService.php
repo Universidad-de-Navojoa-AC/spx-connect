@@ -101,4 +101,113 @@ class CfdiService extends BaseApiService
     }
 
 
+    /**
+     * Link or unlink CFDI to a journal entry.
+     *
+     * @param int $journalNumber
+     * @param string $rfc
+     * @param array $uuidList
+     * @param array $extensionFiles
+     * @param array $amounts
+     * @param int|null $line
+     * @param bool $unlink
+     * @return bool
+     */
+    public function link(int $journalNumber, string $rfc, array $uuidList, array $extensionFiles, array $amounts, ?int $line, bool $unlink = false): bool
+    {
+        try {
+            return $this->request('post', 'vincula-comprobante', [
+                'journalNumber' => $journalNumber,
+                'journalLine' => $line,
+                'rfc' => $rfc,
+                'comprobantes' => $uuidList,
+                'extensionFiles' => $extensionFiles,
+                'importeAVincular' => $amounts,
+                'desvincular' => $unlink,
+            ])
+                ->throw()
+                ->ok();
+        } catch (RequestException $e) {
+            $status = $e->response?->status();
+            $body = $e->response?->body();
+
+            Log::error('Error al ligar los comprobantes', [
+                'status' => $status,
+                'body' => $body,
+                'ex' => $e,
+            ]);
+        } catch (ConnectionException $e) {
+            Log::error('Conexión fallida a SunPlusXtra', ['ex' => $e]);
+        }
+
+        return false;
+    }
+
+    /**
+     * Link or unlink multiple CFDIs to a journal entry.
+     *
+     * @param int $journalNumber
+     * @param string $rfc
+     * @param array $lines
+     * @param bool $unlink
+     * @return bool
+     */
+    public function multiLink(int $journalNumber, string $rfc, array $lines, bool $unlink = false): bool
+    {
+        try {
+            return $this->request('post', 'vincula-comprobante', [
+                'journalNumber' => $journalNumber,
+                'rfc' => $rfc,
+                'requestDataVinculaComprobantes' => $lines,
+                'desvincular' => $unlink,
+            ])
+                ->throw()
+                ->ok();
+        } catch (RequestException $e) {
+            $status = $e->response?->status();
+            $body = $e->response?->body();
+
+            Log::error('Error al ligar los comprobantes', [
+                'status' => $status,
+                'body' => $body,
+                'ex' => $e,
+            ]);
+        } catch (ConnectionException $e) {
+            Log::error('Conexión fallida a SunPlusXtra', ['ex' => $e]);
+        }
+
+        return false;
+    }
+
+    /**
+     * Upload a single or multiple CFDI XML files to SunPlusXtra.
+     *
+     * @param string $rfc
+     * @param array $xmlFiles
+     * @return array
+     */
+    public function upload(string $rfc, array $xmlFiles): array
+    {
+        try {
+            return $this->request('post', 'upload-comprobantes', [
+                'rfc' => $rfc,
+                'comprobantes' => $xmlFiles,
+            ])
+                ->throw()
+                ->json('response', []);
+        } catch (RequestException $e) {
+            $status = $e->response->status();
+            $body = $e->response->body();
+
+            Log::error('Error al subir los comprobantes a SunPlusXtra', [
+                'status' => $status,
+                'body' => $body,
+                'ex' => $e,
+            ]);
+        } catch (ConnectionException $e) {
+            Log::error('Conexión fallida a SunPlusXtra', ['ex' => $e]);
+        }
+
+        return [];
+    }
 }
