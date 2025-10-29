@@ -2,7 +2,6 @@
   "name": "unav/spx-connect",
   "description": "SDK para conexión de Laravel con SunPlusXtra",
   "minimum-stability": "stable",
-  "version": "1.5.0",
   "license": "proprietary",
   "authors": [
     {
