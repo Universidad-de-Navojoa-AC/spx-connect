@@ -23,14 +23,14 @@
 
 # Ejemplos de commits válidos:
 
-feat(auth): agregar login con OAuth
-fix(api): corregir validación de email
-perf(db): optimizar consulta de usuarios
-docs: actualizar README con instrucciones de instalación
-chore: actualizar dependencias de npm
-refactor!: renombrar método público getUserData a fetchUserData
-feat: eliminar endpoint /v1/login
-BREAKING CHANGE: usar /v2/login en su lugar
+- feat(auth): agregar login con OAuth
+- fix(api): corregir validación de email
+- perf(db): optimizar consulta de usuarios
+- docs: actualizar README con instrucciones de instalación
+- chore: actualizar dependencias de npm
+- refactor!: renombrar método público getUserData a fetchUserData
+- feat: eliminar endpoint /v1/login
+- BREAKING CHANGE: usar /v2/login en su lugar
 
 ---
 
