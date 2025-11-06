@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.1.0...v1.1.1) (2025-11-06)
+
+
+### Bug Fixes
+
+* **api:** Renombrar propiedad 'fileType' a 'printFormat' en el payload para la API del downloadJournalFile ([fcde435](https://github.com/Universidad-de-Navojoa-AC/spx-connect/commit/fcde43576eda82fe70b95b85cbfc35134f65647e))
+
 # [1.1.0](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.0.0...v1.1.0) (2025-10-29)
 
 
