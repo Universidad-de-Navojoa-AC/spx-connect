@@ -70,11 +70,11 @@ class JournalService extends BaseApiService
             $payload = empty($logo) ? [
                 'journalNumber' => $journalNumber,
                 'book' => $book,
-                'fileType' => $journalFileType->value,
+                'printFormat' => $journalFileType->value,
             ] : [
                 'journalNumber' => $journalNumber,
                 'book' => $book,
-                'fileType' => $journalFileType->value,
+                'printFormat' => $journalFileType->value,
                 'logoOption' => [
                     'logoSource' => $logo
                 ],
