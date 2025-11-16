@@ -37,7 +37,7 @@ class BaseApiService
         return $this->request('get', $endpoint, $data, $headers);
     }
 
-    public function setUserId(string $userId): BaseApiService
+    public function setUserId(?string $userId = 'global'): BaseApiService
     {
         $this->userId = $userId;
         return $this;

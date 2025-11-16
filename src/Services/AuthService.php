@@ -92,7 +92,7 @@ class AuthService
         return false;
     }
 
-    public function setUserId(string $userId): AuthService
+    public function setUserId(?string $userId = 'global'): AuthService
     {
         $this->userId = $userId;
         return $this;
