@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.2.2...v1.2.3) (2025-11-16)
+
+
+### Bug Fixes
+
+* **AuthService:** Actualizar userId de 'default' a 'global' y añadir método setter ([e8627e1](https://github.com/Universidad-de-Navojoa-AC/spx-connect/commit/e8627e146110b3bdb0c0957bbbc4412ab956550a))
+
 ## [1.2.2](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.2.1...v1.2.2) (2025-11-16)
 
 
