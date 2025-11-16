@@ -10,6 +10,7 @@ class BaseApiService
 {
     protected string $baseUrl;
     protected AuthService $auth;
+    protected string $userId = 'default';
 
     public function __construct()
     {
@@ -19,12 +20,12 @@ class BaseApiService
 
     public function request(string $method, string $endpoint, array $data = [], array $headers = [])
     {
-        $response = Http::withToken(TokenManager::getToken())
+        $response = Http::withToken(TokenManager::getToken($this->userId))
             ->withHeaders($headers)
             ->$method("$this->baseUrl/$endpoint", $data);
 
         if ($response->status() === 401 && $this->auth->refreshAccessToken()) {
-            $response = Http::withToken(TokenManager::getToken())
+            $response = Http::withToken(TokenManager::getToken($this->userId))
                 ->$method("$this->baseUrl/$endpoint", $data);
         }
 
@@ -34,5 +35,11 @@ class BaseApiService
     public function get(string $endpoint, array $data = [], array $headers = [])
     {
         return $this->request('get', $endpoint, $data, $headers);
+    }
+
+    public function setUserId(string $userId): BaseApiService
+    {
+        $this->userId = $userId;
+        return $this;
     }
 }
