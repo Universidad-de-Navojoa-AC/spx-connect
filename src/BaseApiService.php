@@ -10,7 +10,7 @@ class BaseApiService
 {
     protected string $baseUrl;
     protected AuthService $auth;
-    protected string $userId = 'default';
+    protected string $userId = 'global';
 
     public function __construct()
     {
