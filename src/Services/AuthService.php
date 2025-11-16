@@ -11,6 +11,8 @@ class AuthService
 {
     protected string $baseUrl;
 
+    private string $userId = 'default';
+
     public function __construct()
     {
         $this->baseUrl = 'https://api.sunplusxtra.mx/api/spxtra';
@@ -28,8 +30,8 @@ class AuthService
             $token = $response->json()['access_token'] ?? null;
 
             if ($token) {
-                TokenManager::setToken($token);
-                TokenManager::setCredentials($username, $password, $email);
+                TokenManager::setToken($token, userId: $this->userId);
+                TokenManager::setCredentials($username, $password, $email, userId: $this->userId);
                 return true;
             }
         }
@@ -39,7 +41,7 @@ class AuthService
 
     public function hasValidToken(): bool
     {
-        $token = TokenManager::getToken();
+        $token = TokenManager::getToken($this->userId);
 
         try {
             $response = Http::withToken($token)
@@ -80,7 +82,7 @@ class AuthService
 
     public function refreshAccessToken(): bool
     {
-        $credentials = TokenManager::getCredentials();
+        $credentials = TokenManager::getCredentials($this->userId);
 
         if ($credentials) {
             return $this->login($credentials['username'], $credentials['password'], $credentials['email']);
