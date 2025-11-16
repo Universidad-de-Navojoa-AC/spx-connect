@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.2.4...v1.2.5) (2025-11-16)
+
+
+### Bug Fixes
+
+* **AuthService, BaseApiService:** Actualizar el método setUserId para utilizar `global` como valor predeterminado. ([269b23e](https://github.com/Universidad-de-Navojoa-AC/spx-connect/commit/269b23e62374033a90967915f184a428ba7e985a))
+
 ## [1.2.4](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.2.3...v1.2.4) (2025-11-16)
 
 
