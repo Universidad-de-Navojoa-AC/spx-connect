@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.2.3...v1.2.4) (2025-11-16)
+
+
+### Bug Fixes
+
+* **TokenManager:** Actualizar dentro del método setCredentials el método tokenKey a credentialKey. ([aeac28c](https://github.com/Universidad-de-Navojoa-AC/spx-connect/commit/aeac28ca3fa565a3894236fc5a7b5810b2743da8))
+
 ## [1.2.3](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.2.2...v1.2.3) (2025-11-16)
 
 
