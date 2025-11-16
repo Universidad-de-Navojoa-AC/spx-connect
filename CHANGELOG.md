@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.2.1...v1.2.2) (2025-11-16)
+
+
+### Bug Fixes
+
+* **BaseApiService:** Actualizar el valor predeterminado de userId de default a global. ([09e7bb8](https://github.com/Universidad-de-Navojoa-AC/spx-connect/commit/09e7bb8553738cecfec287b637751ca82c62b7a0))
+
 ## [1.2.1](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.2.0...v1.2.1) (2025-11-16)
 
 
