@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.2.0...v1.2.1) (2025-11-16)
+
+
+### Bug Fixes
+
+* **TokenManager:** Cambiar el tipo de userId de int a string en los métodos de gestión de tokens y credenciales ([378468a](https://github.com/Universidad-de-Navojoa-AC/spx-connect/commit/378468a839d1747816d2305594881b4c75c264e4))
+
 # [1.2.0](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.1.1...v1.2.0) (2025-11-16)
 
 
