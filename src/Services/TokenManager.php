@@ -48,7 +48,7 @@ class TokenManager
     {
         $data = compact('username', 'password', 'email');
         $encrypted = Crypt::encryptString(json_encode($data));
-        $key = self::tokenKey($userId);
+        $key = self::credentialKey($userId);
 
         Cache::put($key, $encrypted, $ttl);
     }
