@@ -6,12 +6,13 @@ use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Unav\SpxConnect\BaseApiService;
 
 class AuthService
 {
     protected string $baseUrl;
 
-    private string $userId = 'default';
+    private string $userId = 'global';
 
     public function __construct()
     {
@@ -89,5 +90,11 @@ class AuthService
         }
 
         return false;
+    }
+
+    public function setUserId(string $userId): AuthService
+    {
+        $this->userId = $userId;
+        return $this;
     }
 }
