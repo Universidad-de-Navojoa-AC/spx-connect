@@ -11,18 +11,18 @@ class TokenManager
     protected static string $tokenKeyPrefix = 'spx_access_token_';
     protected static string $credentialPrefix = 'spx_credentials_';
 
-    public static function setToken(string $token, int $ttl = 3600): void
+    public static function setToken(string $token, ?int $ttl = 3600, ?int $userId = null): void
     {
         $encrypted = Crypt::encryptString($token);
-        $userId = Auth::id();
+        $key = self::tokenKey($userId);
 
-        Cache::put(self::$tokenKeyPrefix . $userId, $encrypted, $ttl);
+        Cache::put($key, $encrypted, $ttl);
     }
 
-    public static function getToken(): ?string
+    public static function getToken(?int $userId = null): ?string
     {
-        $userId = Auth::id();
-        $encrypted = Cache::get(self::$tokenKeyPrefix . $userId);
+        $key = self::tokenKey($userId);
+        $encrypted = Cache::get($key);
 
         if (!$encrypted) {
             return null;
@@ -35,33 +35,29 @@ class TokenManager
         }
     }
 
-    public static function hasToken(): bool
+    public static function hasToken(?int $userId = null): bool
     {
-        $userId = Auth::id();
-
-        return Cache::has(self::$tokenKeyPrefix . $userId);
+        return self::getToken($userId) !== null;
     }
 
-    public static function clearToken(): void
+    public static function clearToken(?int $userId = null): void
     {
-        $userId = Auth::id();
-
-        Cache::forget(self::$tokenKeyPrefix . $userId);
+        Cache::forget(self::tokenKey($userId));
     }
 
-    public static function setCredentials(string $username, string $password, string $email, int $ttl = 3600): void
+    public static function setCredentials(string $username, string $password, string $email, ?int $ttl = 3600, ?int $userId = null): void
     {
         $data = compact('username', 'password', 'email');
         $encrypted = Crypt::encryptString(json_encode($data));
-        $userId = Auth::id();
+        $key = self::tokenKey($userId);
 
-        Cache::put(self::$credentialPrefix . $userId, $encrypted, $ttl);
+        Cache::put($key, $encrypted, $ttl);
     }
 
-    public static function getCredentials(): ?array
+    public static function getCredentials(?int $userId = null): ?array
     {
-        $userId = Auth::id();
-        $encrypted = Cache::get(self::$credentialPrefix . $userId);
+        $key = self::credentialKey($userId);
+        $encrypted = Cache::get($key);
 
         if (!$encrypted) {
             return null;
@@ -75,10 +71,20 @@ class TokenManager
         }
     }
 
-    public static function clearCredentials(): void
+    public static function clearCredentials(?int $userId = null): void
     {
-        $userId = Auth::id();
+        Cache::forget(self::credentialKey($userId));
+    }
 
-        Cache::forget(self::$credentialPrefix . $userId);
+    protected static function tokenKey(?int $userId): string
+    {
+        $suffix = $userId !== null ? (string) $userId : 'global';
+        return self::$tokenKeyPrefix . $suffix;
+    }
+
+    protected static function credentialKey(?int $userId): string
+    {
+        $suffix = $userId !== null ? (string) $userId : 'global';
+        return self::$credentialPrefix . $suffix;
     }
 }
