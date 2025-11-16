@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.1.1...v1.2.0) (2025-11-16)
+
+
+### Features
+
+* **AuthService:** Añadir el parámetro userId a los métodos TokenManager para el almacenamiento en caché específico del usuario. ([90cfbf4](https://github.com/Universidad-de-Navojoa-AC/spx-connect/commit/90cfbf4bf6826617578da868222bc844da67fc8f))
+* **BaseApiService:** Añadir la propiedad userId y el método setter para la gestión de tokens. ([b219605](https://github.com/Universidad-de-Navojoa-AC/spx-connect/commit/b2196057ff9ba5486b084ab34f49fa0f62bdfb9f))
+* **TokenManager:** Añadir el parámetro userId a los métodos token y credentials para el almacenamiento en caché específico del usuario. ([0b036a0](https://github.com/Universidad-de-Navojoa-AC/spx-connect/commit/0b036a0213ef2472db27d26ae033984d16bc4c64))
+
 ## [1.1.1](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.1.0...v1.1.1) (2025-11-06)
 
 
