@@ -4,26 +4,23 @@ namespace Unav\SpxConnect\Services;
 
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\RequestException;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Unav\SpxConnect\BaseApiService;
 use Unav\SpxConnect\Enums\DimensionType;
 
-class SunPlusDimensionService
+class SunPlusDimensionService extends BaseApiService
 {
-    protected string $baseUrl;
-
     public function __construct()
     {
-        $this->baseUrl = 'https://api.sunplusxtra.mx/api/spxtra';
+        parent::__construct();
     }
 
     public function find(DimensionType $dimension): array
     {
         try {
-            return Http::withToken(TokenManager::getToken())
-                ->get("$this->baseUrl/dimension", [
-                    'catID' => $dimension->value,
-                ])
+            return $this->request('get', 'dimension', [
+                'catID' => $dimension->value,
+            ])
                 ->throw()
                 ->json('response', []);
         } catch (RequestException $e) {

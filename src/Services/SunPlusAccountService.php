@@ -6,21 +6,19 @@ use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Unav\SpxConnect\BaseApiService;
 
-class SunPlusAccountService
+class SunPlusAccountService extends BaseApiService
 {
-    protected string $baseUrl;
-
     public function __construct()
     {
-        $this->baseUrl = 'https://api.sunplusxtra.mx/api/spxtra';
+        parent::__construct();
     }
 
     public function getAll(): array
     {
         try {
-            return Http::withToken(TokenManager::getToken())
-                ->get("$this->baseUrl/account-list")
+            return $this->request('get', 'account-list')
                 ->throw()
                 ->json('response', []);
         } catch (RequestException $e) {
@@ -42,11 +40,10 @@ class SunPlusAccountService
     public function findByCode(string $accountCode): array
     {
         try {
-            return Http::withToken(TokenManager::getToken())
-                ->get("$this->baseUrl/account-list", [
-                    'part' => $accountCode,
-                    'code' => 1,
-                ])
+            return $this->request('get', 'account-list', [
+                'part' => $accountCode,
+                'code' => 1,
+            ])
                 ->throw()
                 ->json('response', []);
         } catch (RequestException $e) {
@@ -68,11 +65,10 @@ class SunPlusAccountService
     public function search(string $query): array
     {
         try {
-            return Http::withToken(TokenManager::getToken())
-                ->get("$this->baseUrl/account-list", [
-                    'part' => $query,
-                    'code' => 0,
-                ])
+            return $this->request('get', 'account-list', [
+                'part' => $query,
+                'code' => 0,
+            ])
                 ->throw()
                 ->json('response', []);
         } catch (RequestException $e) {

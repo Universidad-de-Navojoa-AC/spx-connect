@@ -4,25 +4,22 @@ namespace Unav\SpxConnect\Services;
 
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\RequestException;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Unav\SpxConnect\BaseApiService;
 
-class ProductService
+class ProductService extends BaseApiService
 {
-    protected string $baseUrl;
-
     public function __construct()
     {
-        $this->baseUrl = 'https://api.sunplusxtra.mx/api/spxtra';
+        parent::__construct();
     }
 
     public function search(string $query): array
     {
         try {
-            return Http::withToken(TokenManager::getToken())
-                ->get("$this->baseUrl/products", [
-                    'search' => $query
-                ])
+            return $this->request('get', 'products', [
+                'search' => $query
+            ])
                 ->throw()
                 ->json('response', []);
         } catch (RequestException $e) {
