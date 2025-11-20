@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.2.6...v1.3.0) (2025-11-20)
+
+
+### Features
+
+* **CfdiService:** Agregar método para obtener el XML del CFDI timbrado por UUID. ([d4a786d](https://github.com/Universidad-de-Navojoa-AC/spx-connect/commit/d4a786d14d7c679e44554fd04a278948afd45b69))
+
 ## [1.2.6](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.2.5...v1.2.6) (2025-11-18)
 
 ## [1.2.5](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.2.4...v1.2.5) (2025-11-16)
