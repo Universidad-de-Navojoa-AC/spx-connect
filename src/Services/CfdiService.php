@@ -100,7 +100,6 @@ class CfdiService extends BaseApiService
         return [];
     }
 
-
     /**
      * Link or unlink CFDI to a journal entry.
      *
@@ -209,5 +208,39 @@ class CfdiService extends BaseApiService
         }
 
         return [];
+    }
+
+    /**
+     * Get the XML of a stamped CFDI by its UUID.
+     *
+     * @param string $uuid
+     * @return string|null
+     */
+    public function getXml(string $uuid): ?string
+    {
+        if (empty($uuid)) {
+            return null;
+        }
+
+        try {
+            return $this->request('get', 'comprobante', [
+                'uuid' => $uuid,
+            ])
+                ->throw()
+                ->json('response', null);
+        } catch (RequestException $e) {
+            $status = $e->response->status();
+            $body = $e->response->body();
+
+            Log::error('Error al obtener el XML del comprobante', [
+                'status' => $status,
+                'body' => $body,
+                'ex' => $e,
+            ]);
+        } catch (ConnectionException $e) {
+            Log::error('Conexión fallida a SunPlusXtra', ['ex' => $e]);
+        }
+
+        return null;
     }
 }
