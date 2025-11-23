@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Unav\SpxConnect\BaseApiService;
 use Unav\SpxConnect\Contracts\AuthServiceInterface;
+use Unav\SpxConnect\Services\TokenManager;
 
 class AuthService implements AuthServiceInterface
 {
@@ -93,7 +94,7 @@ class AuthService implements AuthServiceInterface
         return false;
     }
 
-    public function setUserId(?string $userId = 'global'): AuthService
+    public function setUserId(?string $userId = 'global'): self
     {
         $this->userId = $userId;
         return $this;
