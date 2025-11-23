@@ -6,7 +6,6 @@ use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
-use Unav\SpxConnect\BaseApiService;
 use Unav\SpxConnect\Contracts\AuthServiceInterface;
 use Unav\SpxConnect\Services\TokenManager;
 
