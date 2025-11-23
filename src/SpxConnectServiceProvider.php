@@ -38,6 +38,8 @@ class SpxConnectServiceProvider extends ServiceProvider
         $this->app->singleton(SunPlusAccountServiceInterface::class, SunPlusAccountService::class);
         $this->app->singleton(SunPlusDimensionServiceInterface::class, SunPlusDimensionService::class);
 
+        // Note: TokenManager is a static utility class and doesn't require container registration
+        
         // Register main client
         $this->app->singleton(SpxClientInterface::class, SpxClient::class);
         $this->app->alias(SpxClientInterface::class, 'spxconnect');
