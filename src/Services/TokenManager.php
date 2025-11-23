@@ -4,8 +4,9 @@ namespace Unav\SpxConnect\Services;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Crypt;
+use Unav\SpxConnect\Contracts\TokenManagerInterface;
 
-class TokenManager
+class TokenManager implements TokenManagerInterface
 {
     protected static string $tokenKeyPrefix = 'spx_access_token_';
     protected static string $credentialPrefix = 'spx_credentials_';

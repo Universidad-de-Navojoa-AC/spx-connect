@@ -2,35 +2,23 @@
 
 namespace Unav\SpxConnect\Contracts;
 
-use Unav\SpxConnect\Services\AuthService;
-use Unav\SpxConnect\Services\CacheManager;
-use Unav\SpxConnect\Services\ClientService;
-use Unav\SpxConnect\Services\EducationLevelService;
-use Unav\SpxConnect\Services\JournalService;
-use Unav\SpxConnect\Services\ProductService;
-use Unav\SpxConnect\Services\SunPlusAccountService;
-use Unav\SpxConnect\Services\SunPlusDimensionService;
-
-/**
- * Interface SpxClientInterface
- *
- * @property AuthService $auth
- */
 interface SpxClientInterface
 {
-    public function auth(): AuthService;
+    public function auth(): AuthServiceInterface;
 
-    public function cache(): CacheManager;
+    public function cache(): CacheManagerInterface;
 
-    public function sunplusAccounts(): SunPlusAccountService;
+    public function sunplusAccounts(): SunPlusAccountServiceInterface;
 
-    public function sunplusDimension(): SunPlusDimensionService;
+    public function sunplusDimension(): SunPlusDimensionServiceInterface;
 
-    public function products(): ProductService;
+    public function products(): ProductServiceInterface;
 
-    public function clients(): ClientService;
+    public function clients(): ClientServiceInterface;
 
-    public function educationLevels(): EducationLevelService;
+    public function educationLevels(): EducationLevelServiceInterface;
 
-    public function journal(): JournalService;
+    public function journal(): JournalServiceInterface;
+
+    public function cfdi(): CfdiServiceInterface;
 }

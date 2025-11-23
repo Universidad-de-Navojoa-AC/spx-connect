@@ -3,28 +3,28 @@
 namespace Unav\SpxConnect\Facades;
 
 use Illuminate\Support\Facades\Facade;
+use Unav\SpxConnect\Contracts\AuthServiceInterface;
 use Unav\SpxConnect\Contracts\CacheManagerInterface;
-use Unav\SpxConnect\Services\AuthService;
-use Unav\SpxConnect\Services\CfdiService;
-use Unav\SpxConnect\Services\ClientService;
-use Unav\SpxConnect\Services\EducationLevelService;
-use Unav\SpxConnect\Services\JournalService;
-use Unav\SpxConnect\Services\ProductService;
-use Unav\SpxConnect\Services\SunPlusAccountService;
-use Unav\SpxConnect\Services\SunPlusDimensionService;
+use Unav\SpxConnect\Contracts\CfdiServiceInterface;
+use Unav\SpxConnect\Contracts\ClientServiceInterface;
+use Unav\SpxConnect\Contracts\EducationLevelServiceInterface;
+use Unav\SpxConnect\Contracts\JournalServiceInterface;
+use Unav\SpxConnect\Contracts\ProductServiceInterface;
+use Unav\SpxConnect\Contracts\SunPlusAccountServiceInterface;
+use Unav\SpxConnect\Contracts\SunPlusDimensionServiceInterface;
 
 /**
  * Facade for SpxClient
  *
- * @method static AuthService auth()
+ * @method static AuthServiceInterface auth()
  * @method static CacheManagerInterface cache()
- * @method static SunPlusAccountService sunplusAccounts()
- * @method static SunPlusDimensionService sunplusDimension()
- * @method static ProductService products()
- * @method static ClientService clients()
- * @method static EducationLevelService educationLevels()
- * @method static JournalService journal()
- * @method static CfdiService cfdi()
+ * @method static SunPlusAccountServiceInterface sunplusAccounts()
+ * @method static SunPlusDimensionServiceInterface sunplusDimension()
+ * @method static ProductServiceInterface products()
+ * @method static ClientServiceInterface clients()
+ * @method static EducationLevelServiceInterface educationLevels()
+ * @method static JournalServiceInterface journal()
+ * @method static CfdiServiceInterface cfdi()
  */
 class SpxConnect extends Facade
 {
