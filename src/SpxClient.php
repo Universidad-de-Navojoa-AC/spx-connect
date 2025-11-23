@@ -13,6 +13,14 @@ use Unav\SpxConnect\Contracts\SpxClientInterface;
 use Unav\SpxConnect\Contracts\SunPlusAccountServiceInterface;
 use Unav\SpxConnect\Contracts\SunPlusDimensionServiceInterface;
 
+/**
+ * Main client for SPX Connect SDK
+ *
+ * Provides access to all SPX Connect services through a unified interface.
+ * Services are injected via constructor and can be accessed through method calls.
+ *
+ * @see SpxClientInterface For method signatures
+ */
 class SpxClient implements SpxClientInterface
 {
     public function __construct(
