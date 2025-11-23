@@ -7,8 +7,9 @@ use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Unav\SpxConnect\BaseApiService;
+use Unav\SpxConnect\Contracts\AuthServiceInterface;
 
-class AuthService
+class AuthService implements AuthServiceInterface
 {
     protected string $baseUrl;
 

@@ -7,8 +7,9 @@ use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Unav\SpxConnect\BaseApiService;
+use Unav\SpxConnect\Contracts\SunPlusAccountServiceInterface;
 
-class SunPlusAccountService extends BaseApiService
+class SunPlusAccountService extends BaseApiService implements SunPlusAccountServiceInterface
 {
     public function __construct()
     {

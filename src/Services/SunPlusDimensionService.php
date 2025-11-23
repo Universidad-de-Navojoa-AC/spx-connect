@@ -7,8 +7,9 @@ use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Log;
 use Unav\SpxConnect\BaseApiService;
 use Unav\SpxConnect\Enums\DimensionType;
+use Unav\SpxConnect\Contracts\SunPlusDimensionServiceInterface;
 
-class SunPlusDimensionService extends BaseApiService
+class SunPlusDimensionService extends BaseApiService implements SunPlusDimensionServiceInterface
 {
     public function __construct()
     {

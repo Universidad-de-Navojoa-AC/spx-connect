@@ -6,8 +6,9 @@ use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Log;
 use Unav\SpxConnect\BaseApiService;
+use Unav\SpxConnect\Contracts\CfdiServiceInterface;
 
-class CfdiService extends BaseApiService
+class CfdiService extends BaseApiService implements CfdiServiceInterface
 {
     public function __construct()
     {
