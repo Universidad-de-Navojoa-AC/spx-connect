@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.3.0...v1.3.1) (2025-11-28)
+
+
+### Bug Fixes
+
+* **CfdiService:** Actualizar endpoint del método multiLink para usar 'vincula-comprobante-lineas' ([fcb24d1](https://github.com/Universidad-de-Navojoa-AC/spx-connect/commit/fcb24d13d007f8cb2ace030962bba3a9158f2cac))
+
 # [1.3.0](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.2.6...v1.3.0) (2025-11-20)
 
 
