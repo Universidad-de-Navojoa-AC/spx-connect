@@ -154,7 +154,7 @@ class CfdiService extends BaseApiService
     public function multiLink(int $journalNumber, string $rfc, array $lines, bool $unlink = false): bool
     {
         try {
-            return $this->request('post', 'vincula-comprobante', [
+            return $this->request('post', 'vincula-comprobante-lineas', [
                 'journalNumber' => $journalNumber,
                 'rfc' => $rfc,
                 'requestDataVinculaComprobantes' => $lines,
