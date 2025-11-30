@@ -3,6 +3,7 @@
 
 # Laravel config cache
 .phpunit.result.cache
+.phpunit.cache/
 
 # Node
 node_modules/
