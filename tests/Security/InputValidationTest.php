@@ -165,10 +165,11 @@ class InputValidationTest extends TestCase
         $cfdiService = new CfdiService();
 
         // Email with leading/trailing spaces
-        $email = '   test@test.com   ';
+        $emailWithSpaces = '   test@test.com   ';
 
-        $cfdiService->stamp('<xml>test</xml>', $email);
+        $cfdiService->stamp('<xml>test</xml>', $emailWithSpaces);
 
+        // Verify that the email was trimmed
         Http::assertSent(function ($request) {
             return $request['emailsSending'] === 'test@test.com';
         });
@@ -182,7 +183,7 @@ class InputValidationTest extends TestCase
 
         $cfdiService = new CfdiService();
 
-        // Should not crash with null line
+        // The line parameter is nullable, should handle null gracefully
         $result = $cfdiService->link(
             journalNumber: 123,
             rfc: 'RFC123',
@@ -191,6 +192,11 @@ class InputValidationTest extends TestCase
             amounts: [100],
             line: null
         );
+
+        // Verify the request was sent with null line
+        Http::assertSent(function ($request) {
+            return $request['journalLine'] === null;
+        });
 
         $this->assertTrue($result);
     }

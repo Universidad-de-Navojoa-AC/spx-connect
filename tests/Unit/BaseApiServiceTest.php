@@ -125,7 +125,7 @@ class BaseApiServiceTest extends TestCase
         $this->assertInstanceOf(BaseApiService::class, $result);
     }
 
-    public function testSetUserIdWithNullDefaultsToGlobal(): void
+    public function testSetUserIdWithDefaultGlobal(): void
     {
         TokenManager::setToken('global-token', userId: 'global');
 
@@ -133,7 +133,7 @@ class BaseApiServiceTest extends TestCase
             'api.sunplusxtra.mx/*' => Http::response([], 200),
         ]);
 
-        // Pass 'global' instead of null since the property is typed as string
+        // setUserId with 'global' uses the default global context
         $this->apiService->setUserId('global');
         $this->apiService->get('test');
 

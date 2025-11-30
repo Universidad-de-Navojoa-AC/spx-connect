@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Http;
 use Unav\SpxConnect\Services\AuthService;
 use Unav\SpxConnect\Services\CfdiService;
 use Unav\SpxConnect\Services\ClientService;
+use Unav\SpxConnect\Services\ProductService;
 use Unav\SpxConnect\Services\TokenManager;
 use Unav\SpxConnect\Tests\TestCase;
 
@@ -170,7 +171,7 @@ class HttpSecurityTest extends TestCase
                 ->push(['response' => [['id' => 1]]], 200),
         ]);
 
-        $productService = new \Unav\SpxConnect\Services\ProductService();
+        $productService = new ProductService();
         $result = $productService->search('test');
 
         // Should have made 3 requests: initial, login refresh, retry
