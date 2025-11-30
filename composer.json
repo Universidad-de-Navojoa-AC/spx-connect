@@ -28,5 +28,10 @@
         "SpxConnect": "Unav\\SpxConnect\\Facades\\SpxConnect"
       }
     }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^12.3",
+    "orchestra/testbench": "^9.15",
+    "mockery/mockery": "^1.6"
   }
 }
