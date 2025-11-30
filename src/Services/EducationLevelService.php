@@ -6,8 +6,10 @@ use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Unav\SpxConnect\Contracts\EducationLevelServiceInterface;
+use Unav\SpxConnect\Services\TokenManager;
 
-class EducationLevelService
+class EducationLevelService implements EducationLevelServiceInterface
 {
     protected string $baseUrl;
 

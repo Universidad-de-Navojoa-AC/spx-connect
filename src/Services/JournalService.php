@@ -7,8 +7,9 @@ use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Log;
 use Unav\SpxConnect\BaseApiService;
 use Unav\SpxConnect\Enums\JournalFileType;
+use Unav\SpxConnect\Contracts\JournalServiceInterface;
 
-class JournalService extends BaseApiService
+class JournalService extends BaseApiService implements JournalServiceInterface
 {
     public function __construct()
     {

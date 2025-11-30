@@ -2,85 +2,82 @@
 
 namespace Unav\SpxConnect;
 
+use Unav\SpxConnect\Contracts\AuthServiceInterface;
+use Unav\SpxConnect\Contracts\CacheManagerInterface;
+use Unav\SpxConnect\Contracts\CfdiServiceInterface;
+use Unav\SpxConnect\Contracts\ClientServiceInterface;
+use Unav\SpxConnect\Contracts\EducationLevelServiceInterface;
+use Unav\SpxConnect\Contracts\JournalServiceInterface;
+use Unav\SpxConnect\Contracts\ProductServiceInterface;
 use Unav\SpxConnect\Contracts\SpxClientInterface;
-use Unav\SpxConnect\Services\AuthService;
-use Unav\SpxConnect\Services\CacheManager;
-use Unav\SpxConnect\Services\CfdiService;
-use Unav\SpxConnect\Services\ClientService;
-use Unav\SpxConnect\Services\EducationLevelService;
-use Unav\SpxConnect\Services\JournalService;
-use Unav\SpxConnect\Services\ProductService;
-use Unav\SpxConnect\Services\SunPlusAccountService;
-use Unav\SpxConnect\Services\SunPlusDimensionService;
+use Unav\SpxConnect\Contracts\SunPlusAccountServiceInterface;
+use Unav\SpxConnect\Contracts\SunPlusDimensionServiceInterface;
 
 /**
- * Facade para acceder a SpxClient
+ * Main client for SPX Connect SDK
  *
- * @method static AuthService auth()
- * @method static CacheManager cache()
- * @method static SunPlusAccountService sunplusAccounts()
- * @method static SunPlusDimensionService sunplusDimension()
- * @method static ProductService products()
- * @method static ClientService clients()
- * @method static EducationLevelService educationLevels()
+ * Provides access to all SPX Connect services through a unified interface.
+ * Services are injected via constructor and can be accessed through method calls.
+ *
+ * @see SpxClientInterface For method signatures
  */
 class SpxClient implements SpxClientInterface
 {
     public function __construct(
-        protected AuthService             $auth,
-        protected CacheManager            $cache,
-        protected SunPlusAccountService   $sunplusAccounts,
-        protected SunPlusDimensionService $sunplusDimension,
-        protected ProductService          $products,
-        protected ClientService           $clients,
-        protected EducationLevelService   $educationLevels,
-        protected JournalService          $journal,
-        protected CfdiService             $cfdi,
+        protected AuthServiceInterface             $auth,
+        protected CacheManagerInterface            $cache,
+        protected SunPlusAccountServiceInterface   $sunplusAccounts,
+        protected SunPlusDimensionServiceInterface $sunplusDimension,
+        protected ProductServiceInterface          $products,
+        protected ClientServiceInterface           $clients,
+        protected EducationLevelServiceInterface   $educationLevels,
+        protected JournalServiceInterface          $journal,
+        protected CfdiServiceInterface             $cfdi,
     )
     {
     }
 
-    public function auth(): AuthService
+    public function auth(): AuthServiceInterface
     {
         return $this->auth;
     }
 
-    public function cache(): CacheManager
+    public function cache(): CacheManagerInterface
     {
         return $this->cache;
     }
 
-    public function sunplusAccounts(): SunPlusAccountService
+    public function sunplusAccounts(): SunPlusAccountServiceInterface
     {
         return $this->sunplusAccounts;
     }
 
-    public function sunplusDimension(): SunPlusDimensionService
+    public function sunplusDimension(): SunPlusDimensionServiceInterface
     {
         return $this->sunplusDimension;
     }
 
-    public function products(): ProductService
+    public function products(): ProductServiceInterface
     {
         return $this->products;
     }
 
-    public function clients(): ClientService
+    public function clients(): ClientServiceInterface
     {
         return $this->clients;
     }
 
-    public function educationLevels(): EducationLevelService
+    public function educationLevels(): EducationLevelServiceInterface
     {
         return $this->educationLevels;
     }
 
-    public function journal(): JournalService
+    public function journal(): JournalServiceInterface
     {
         return $this->journal;
     }
 
-    public function cfdi(): CfdiService
+    public function cfdi(): CfdiServiceInterface
     {
         return $this->cfdi;
     }

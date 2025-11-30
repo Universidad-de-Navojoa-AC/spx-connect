@@ -6,8 +6,10 @@ use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Unav\SpxConnect\Contracts\ClientServiceInterface;
+use Unav\SpxConnect\Services\TokenManager;
 
-class ClientService
+class ClientService implements ClientServiceInterface
 {
     protected string $baseUrl;
 
