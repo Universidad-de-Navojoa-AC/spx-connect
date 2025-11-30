@@ -19,6 +19,18 @@
       "Unav\\SpxConnect\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Unav\\SpxConnect\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit",
+    "test-unit": "phpunit --testsuite=Unit",
+    "test-feature": "phpunit --testsuite=Feature",
+    "test-performance": "phpunit --testsuite=Performance",
+    "test-security": "phpunit --testsuite=Security"
+  },
   "extra": {
     "laravel": {
       "providers": [
