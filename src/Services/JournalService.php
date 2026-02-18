@@ -98,4 +98,26 @@ class JournalService extends BaseApiService
 
         return null;
     }
+
+    public function getJournalRange(int $from, int $to): array
+    {
+        try {
+            return $this->request('get', "journal/range/{$from}/{$to}")
+                ->throw()
+                ->json('response', []);
+        } catch (RequestException $e) {
+            $status = $e->response->status();
+            $body = $e->response->body();
+
+            Log::error('Error al obtener el rango de diarios', [
+                'status' => $status,
+                'body' => $body,
+                'ex' => $e,
+            ]);
+        } catch (ConnectionException $e) {
+            Log::error('Conexión fallida a SunPlusXtra', ['ex' => $e]);
+        }
+
+        return [];
+    }
 }
