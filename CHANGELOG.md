@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.5.0...v1.5.1) (2026-03-02)
+
+
+### Bug Fixes
+
+* **BaseApiService:** Refactorizar el método de solicitud para mejorar el manejo de tokens y la configuración de tiempo de espera. ([ff94112](https://github.com/Universidad-de-Navojoa-AC/spx-connect/commit/ff94112f14afcd25a2bfb44ac50ecc21ce9d796b))
+
 # [1.5.0](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.4.0...v1.5.0) (2026-03-02)
 
 
