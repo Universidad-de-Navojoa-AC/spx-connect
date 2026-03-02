@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.3.1...v1.4.0) (2026-02-18)
+
+
+### Features
+
+* **JournalService:** Añadir método para devolver los diarios en un rango especificado ([f771bd7](https://github.com/Universidad-de-Navojoa-AC/spx-connect/commit/f771bd7a78bb5abafb44c08101e7d6bcc8b4142c))
+
 ## [1.3.1](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.3.0...v1.3.1) (2025-11-28)
 
 
