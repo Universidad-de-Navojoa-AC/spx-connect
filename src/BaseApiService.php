@@ -25,7 +25,7 @@ class BaseApiService
      */
     public function request(string $method, string $endpoint, array $data = [], array $headers = [])
     {
-        $client = fn() => Http::withToken(TokenManager::getToken($this->userId))
+        $client = Http::withToken(TokenManager::getToken($this->userId))
             ->withHeaders($headers)
             ->connectTimeout(10)
             ->timeout(90);
@@ -37,12 +37,20 @@ class BaseApiService
                 $this->auth->refreshAccessToken();
             });
 
-            $response = $client()->$method("$this->baseUrl/$endpoint", $data);
+            $client = Http::withToken(TokenManager::getToken($this->userId))
+                ->withHeaders($headers)
+                ->connectTimeout(10)
+                ->timeout(90);
+
+            $response = $client->$method("$this->baseUrl/$endpoint", $data);
         }
 
         return $response;
     }
 
+    /**
+     * @throws LockTimeoutException
+     */
     public function get(string $endpoint, array $data = [], array $headers = [])
     {
         return $this->request('get', $endpoint, $data, $headers);
