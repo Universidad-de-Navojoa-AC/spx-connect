@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.4.0...v1.5.0) (2026-03-02)
+
+
+### Features
+
+* **BaseApiService:** Mejorar handling de peticiones, timeout y refresco de token. ([f189e4c](https://github.com/Universidad-de-Navojoa-AC/spx-connect/commit/f189e4cbebf0cd480e0fee34f4540c85b93d33a3))
+
 # [1.4.0](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.3.1...v1.4.0) (2026-02-18)
 
 
