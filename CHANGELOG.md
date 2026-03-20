@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.5.1...v1.6.0) (2026-03-20)
+
+
+### Features
+
+* **SunPlusDimensionService:** Añadir método para creación de dimensiones de Sunplus ([92b9a73](https://github.com/Universidad-de-Navojoa-AC/spx-connect/commit/92b9a734becd0a305e94f1e531a5fc28ad6729b9))
+
 ## [1.5.1](https://github.com/Universidad-de-Navojoa-AC/spx-connect/compare/v1.5.0...v1.5.1) (2026-03-02)
 
 
