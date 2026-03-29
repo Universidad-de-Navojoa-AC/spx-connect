@@ -6,8 +6,9 @@ use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Log;
 use Unav\SpxConnect\BaseApiService;
+use Unav\SpxConnect\Contracts\ProductServiceInterface;
 
-class ProductService extends BaseApiService
+class ProductService extends BaseApiService implements ProductServiceInterface
 {
     public function __construct()
     {
